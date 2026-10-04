@@ -40,7 +40,6 @@ A interface é escura, responsiva e foi pensada para ser simples de navegar, com
 - O saldo muda de cor conforme o resultado: verde quando positivo, vermelho quando negativo.
 - Remoção individual de lançamentos.
 - Dados salvos no navegador (`localStorage`), então continuam ali após recarregar a página.
-- Proteção contra injeção de HTML nas descrições digitadas.
 
 ### Conversor de moedas
 - Converte um valor entre 15 moedas, entre elas real, dólar, euro, libra, iene e peso argentino.

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotações - Finança+</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <header class="cabecalho">
+        <a class="marca" href="index.html">Finança+</a>
+        <nav class="menu">
+            <a class="item-menu" href="index.html">Início</a>
+            <a class="item-menu" href="tela_principal.html">Painel</a>
+            <a class="item-menu" href="tela_conversor.html">Conversor</a>
+            <a class="item-menu ativo" aria-current="page" href="tela_cotacao.html">Cotações</a>
+            <a class="item-menu" href="tela_previsao.html">Investimentos</a>
+            <a class="item-menu" href="tela_login.html">Sair</a>
+        </nav>
+    </header>
+
+    <main class="painel pagina-ferramenta">
+        <div class="pagina-cabecalho">
+            <div>
+                <span class="tag">mercado de moedas</span>
+                <h1>Cotação de Moedas</h1>
+                <p>Descubra quanto uma moeda vale em relação a outra.</p>
+            </div>
+        </div>
+
+        <section class="cartao-autenticacao cartao-ferramenta">
+            <div class="grade-ferramenta dois">
+                <div class="grupo-formulario">
+                    <label for="moeda-cotacao-origem">Moeda base</label>
+                    <select id="moeda-cotacao-origem"></select>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="moeda-cotacao-destino">Moeda desejada</label>
+                    <select id="moeda-cotacao-destino"></select>
+                </div>
+            </div>
+
+            <button id="consultar-cotacao" class="btn-enviar">Consultar cotação</button>
+
+            <div class="painel-cotacao oculto" id="painel-cotacao">
+                <span id="titulo-cotacao">1 BRL em USD</span>
+                <strong id="valor-cotacao">--</strong>
+                <p id="data-cotacao"> </p>
+            </div>
+
+            <p class="mensagem-erro" id="erro-cotacao"></p>
+        </section>
+
+        <section class="grade-informacoes">
+            <div class="cartao-informacao">
+                <h3>O que é a cotação?</h3>
+                <p>É a relação de valor entre duas moedas. Por exemplo, se a cotação for de 5,00 significa que uma unidade da moeda base corresponde a 5 unidades da moeda desejada.</p>
+            </div>
+
+            <div class="cartao-informacao">
+                <h3>Fonte dos dados</h3>
+                <p>Os dados das moedas são consultados pela API Frankfurter,por isso podem ser diferentes das taxas usadas por bancos.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>© 2026 Finança+. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="moedas.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const painel = document.getElementById('painel-cotacao');
+        const origem = document.getElementById('moeda-cotacao-origem');
+        const destino = document.getElementById('moeda-cotacao-destino');
+        const valorEl = document.getElementById('valor-cotacao');
+        const tituloEl = document.getElementById('titulo-cotacao');
+        const dataEl = document.getElementById('data-cotacao');
+        const erroEl = document.getElementById('erro-cotacao');
+
+        await carregarMoedas([origem, destino]);
+        origem.value = 'USD';
+        destino.value = 'BRL';
+
+        async function consultar() {
+            erroEl.textContent = '';
+            painel.classList.remove('oculto');
+            try {
+                const x = await obterCotacao(origem.value, destino.value);
+                valorEl.textContent = x.rate.toLocaleString('pt-BR', { maximumFractionDigits: 8 });
+                tituloEl.textContent = `1 ${origem.value} = ${destino.value}`;
+                dataEl.textContent = `Cotação de ${formatarData(x.date)}`;
+            } catch (e) {
+                valorEl.textContent = '--';
+                dataEl.textContent = '';
+                erroEl.textContent = e.message;
+            }
+        }
+
+        document.getElementById('consultar-cotacao').addEventListener('click', consultar);
+    });
+    </script>
+</body>
+</html>

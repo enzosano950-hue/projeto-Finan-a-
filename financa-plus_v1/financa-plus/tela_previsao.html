@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão de Investimentos - Finança+</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <a class="marca" href="index.html">Finança+</a>
+        <nav class="menu">
+            <a class="item-menu" href="index.html">Início</a>
+            <a class="item-menu" href="tela_principal.html">Painel</a>
+            <a class="item-menu" href="tela_conversor.html">Conversor</a>
+            <a class="item-menu" href="tela_cotacao.html">Cotações</a>
+            <a class="item-menu ativo" aria-current="page" href="tela_previsao.html">Investimentos</a>
+            <a class="item-menu" href="tela_login.html">Sair</a>
+        </nav>
+    </header>
+
+    <main class="painel pagina-ferramenta">
+        <div class="pagina-cabecalho">
+            <div>
+                <span class="tag">planejamento</span>
+                <h1>Previsão de Investimentos</h1>
+                <p>Faça uma simulação de crescimento do seu dinheiro com aportes mensais.</p>
+            </div>
+        </div>
+
+        <section class="cartao-autenticacao cartao-ferramenta">
+            <form id="formulario-previsao" class="grade-ferramenta dois">
+                <div class="grupo-formulario">
+                    <label for="inicial">Investimento inicial (R$)</label>
+                    <input id="inicial" type="number" min="0" step="0.01" value="1000" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="aporte">Aporte mensal (R$)</label>
+                    <input id="aporte" type="number" min="0" step="0.01" value="300" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="taxa">Taxa anual estimada (%)</label>
+                    <input id="taxa" type="number" min="0" step="0.01" value="10" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="prazo">Prazo (anos)</label>
+                    <input id="prazo" type="number" min="1" max="100" step="1" value="5" required>
+                </div>
+
+                <button class="btn-enviar campo-completo" type="submit">Calcular previsão</button>
+            </form>
+
+            <div class="resultado-investimento oculto" id="painel-investimento">
+                <div>
+                    <span>Valor final estimado</span>
+                    <strong id="valor-final">R$ 0,00</strong>
+                </div>
+                <div>
+                    <span>Total investido</span>
+                    <strong id="total-investido">R$ 0,00</strong>
+                </div>
+                <div>
+                    <span>Rendimento estimado</span>
+                    <strong id="rendimento" class="positivo">R$ 0,00</strong>
+                </div>
+            </div>
+
+            <p class="aviso">Esta é uma simulação baseada nos valores informados. não nos responsabilisamos por perdas financeiras.</p>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>© 2026 Finança+. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('formulario-previsao');
+
+        function calcular() {
+            document.getElementById('painel-investimento').classList.remove('oculto');
+
+            const inicial = Number(document.getElementById('inicial').value) || 0;
+            const aporte = Number(document.getElementById('aporte').value) || 0;
+            const taxa = Number(document.getElementById('taxa').value) || 0;
+            const prazo = Number(document.getElementById('prazo').value) || 0;
+
+            const meses = prazo * 12;
+            const juros = Math.pow(1 + taxa / 100, 1 / 12) - 1;
+
+            let saldo = inicial;
+            for (let i = 0; i < meses; i++) {
+                saldo = saldo * (1 + juros) + aporte;
+            }
+
+            const investido = inicial + aporte * meses;
+
+            document.getElementById('valor-final').textContent = formatarReal(saldo);
+            document.getElementById('total-investido').textContent = formatarReal(investido);
+            document.getElementById('rendimento').textContent = formatarReal(Math.max(0, saldo - investido));
+        }
+
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                calcular();
+            });
+        }
+    });
+
+    function formatarReal(valor) {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+    }
+    </script>
+</body>
+</html>

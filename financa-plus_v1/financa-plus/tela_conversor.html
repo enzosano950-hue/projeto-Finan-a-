@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor - Finança+</title>
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+    <header class="cabecalho">
+        <a class="marca" href="index.html">Finança+</a>
+        <nav class="menu">
+            <a class="item-menu" href="index.html">Início</a>
+            <a class="item-menu" href="tela_principal.html">Painel</a>
+            <a class="item-menu ativo" aria-current="page" href="tela_conversor.html">Conversor</a>
+            <a class="item-menu" href="tela_cotacao.html">Cotações</a>
+            <a class="item-menu" href="tela_previsao.html">Investimentos</a>
+            <a class="item-menu" href="tela_login.html">Sair</a>
+        </nav>
+    </header>
+
+    <main class="painel pagina-ferramenta">
+        <div class="pagina-cabecalho">
+            <div>
+                <span class="tag">ferramenta para conversão de moedas</span>
+                <h1>Conversor de Moedas</h1>
+                <p>Converta valores entre moedas com uma cotação atualizada pela API.</p>
+            </div>
+        </div>
+
+        <section class="cartao-autenticacao cartao-ferramenta">
+            <form id="formulario-conversor" class="grade-ferramenta">
+                <div class="grupo-formulario">
+                    <label for="valor-conversao">Valor</label>
+                    <input id="valor-conversao" type="number" min="0.01" step="0.01" value="100" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="origem">Moeda de origem</label>
+                    <select id="origem"></select>
+                </div>
+
+                <button type="button" id="inverter" class="btn-inverter grande">↔</button>
+
+                <div class="grupo-formulario">
+                    <label for="destino">Moeda de destino</label>
+                    <select id="destino"></select>
+                </div>
+
+                <button class="btn-enviar" type="submit">Converter</button>
+            </form>
+
+            <div class="resultado-destaque oculto" id="painel-resultado">
+                <span>Resultado</span>
+                <strong id="resultado">--</strong>
+                <p id="linha-cotacao">Informe as moedas para consultar.</p>
+                <small id="data"> </small>
+            </div>
+
+            <p class="mensagem-erro" id="erro"></p>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>© 2026 Finança+. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="moedas.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const origem = document.getElementById('origem');
+        const destino = document.getElementById('destino');
+        const valor = document.getElementById('valor-conversao');
+
+        const painel = document.getElementById('painel-resultado');
+        const resultado = document.getElementById('resultado');
+        const linha = document.getElementById('linha-cotacao');
+        const data = document.getElementById('data');
+        const erro = document.getElementById('erro');
+
+        await carregarMoedas([origem, destino]);
+        origem.value = 'BRL';
+        destino.value = 'USD';
+
+        async function converter() {
+            erro.textContent = '';
+            painel.classList.remove('oculto');
+
+            try {
+                const numero = Number(valor.value);
+                if (!numero || numero <= 0) throw new Error('Digite um valor maior que zero.');
+
+                const dados = await obterCotacao(origem.value, destino.value);
+                resultado.textContent = formatarMoeda(numero * dados.rate, destino.value);
+                linha.textContent = `1 ${origem.value} = ${dados.rate.toLocaleString('pt-BR', { maximumFractionDigits: 8 })} ${destino.value}`;
+                data.textContent = `Cotação de ${formatarData(dados.date)}`;
+            } catch (e) {
+                resultado.textContent = '--';
+                linha.textContent = 'Não foi possível consultar a cotação.';
+                data.textContent = '';
+                erro.textContent = e.message;
+            }
+        }
+
+        document.getElementById('formulario-conversor').addEventListener('submit', (e) => {
+            e.preventDefault();
+            converter();
+        });
+
+        document.getElementById('inverter').addEventListener('click', () => {
+            const v = origem.value;
+            origem.value = destino.value;
+            destino.value = v;
+        });
+    });
+    </script>
+</body>
+</html>

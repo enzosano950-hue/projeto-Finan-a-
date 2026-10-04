@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Finança+</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-autenticacao">
+        <form class="cartao-autenticacao" method="POST" action="php.php">
+            <input type="hidden" name="acao" value="login">
+            <h1 class="marca" style="text-align: center;">Finança+</h1>
+
+            <div class="grupo-formulario">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com">
+            </div>
+
+            <div class="grupo-formulario">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required placeholder="••••••••">
+            </div>
+
+            <button class="btn-enviar" type="submit">Entrar</button>
+            <a class="link-autenticacao" href="tela_cadastro.html">Não tem uma conta? Cadastre-se</a>
+        </form>
+    </div>
+</body>
+</html>

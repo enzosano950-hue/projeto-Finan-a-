@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Finança+</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="cabecalho">
+    <a class="marca" href="index.html">Finança+</a>
+    <nav class="menu">
+        <a class="item-menu" href="index.html">Início</a>
+        <a class="item-menu ativo" aria-current="page" href="tela_principal.html">Painel</a>
+        <a class="item-menu" href="tela_conversor.html">Conversor</a>
+        <a class="item-menu" href="tela_cotacao.html">Cotações</a>
+        <a class="item-menu" href="tela_previsao.html">Investimentos</a>
+        <a class="item-menu" href="tela_login.html">Sair</a>
+    </nav>
+</header>
+<main class="painel">
+    <section class="cartoes-resumo">
+        <div class="cartao-resumo">
+            <h3>Ganhos</h3><p class="valor positivo" id="exibicao-entradas">R$ 0,00</p>
+        </div>
+        <div class="cartao-resumo">
+            <h3>gastos</h3><p class="valor negativo" id="exibicao-saidas">R$ 0,00</p>
+        </div>
+        <div class="cartao-resumo">
+            <h3>Saldo Total</h3><p class="valor" id="exibicao-total">R$ 0,00</p>
+        </div>
+    </section>
+
+    <section class="cartao-autenticacao largura-total">
+        <h2>Nova Transação</h2>
+        <form id="formulario-transacao" class="formulario-transacao">
+            <div class="grupo-formulario">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" required placeholder="Ex: Salário, Mercado">
+            </div>
+            <div class="grupo-formulario">
+                <label for="valor">Valor (R$)</label>
+                <input type="number" step="0.01" min="0.01" id="valor" required placeholder="0,00">
+            </div>
+            <div class="grupo-formulario">
+                <label for="tipo">Tipo</label>
+                <select id="tipo">
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-enviar">Adicionar</button>
+        </form>
+    </section>
+
+    <section><table class="tabela-transacoes">
+        <thead>
+            <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Tipo</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+        <tbody id="lista-transacoes">
+        </tbody>
+    </table>
+</section>
+</main>
+<footer class="rodape"><p>© 2026 Finança+. Todos os direitos reservados.</p></footer>
+<script src="javascript.js"></script>
+</body>
+</html>

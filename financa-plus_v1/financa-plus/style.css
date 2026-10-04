@@ -1,4 +1,4 @@
-/* ===== Base ===== */
+
 :root {
     --bg-color: #09090b;
     --card-bg: #121214;
@@ -68,7 +68,7 @@ h1, h2, h3 {
     border-radius: 6px;
 }
 
-/* barra indicadora: curta no hover, completa na página atual */
+
 .item-menu::after {
     content: '';
     position: absolute;
@@ -145,7 +145,7 @@ a.marca:focus-visible,
     border-top: 1px solid #29292e;
 }
 
-/* ===== Layout ===== */
+
 .painel {
     width: 100%;
     max-width: 1200px;
@@ -162,7 +162,7 @@ a.marca:focus-visible,
     padding: 1rem;
 }
 
-/* ===== Cards ===== */
+
 .cartao-autenticacao {
     width: 100%;
     max-width: 420px;
@@ -221,7 +221,7 @@ a.marca:focus-visible,
     color: var(--danger);
 }
 
-/* ===== Formulários ===== */
+
 .grupo-formulario {
     display: flex;
     flex-direction: column;
@@ -309,7 +309,7 @@ form.cartao-autenticacao .btn-enviar {
     color: var(--primary-hover);
 }
 
-/* ===== Tabela de transações ===== */
+
 .tabela-transacoes {
     width: 100%;
     border-collapse: collapse;
@@ -346,7 +346,6 @@ form.cartao-autenticacao .btn-enviar {
     }
 }
 
-/* ===== Estilos das telas ===== */
 
 .largura-total {
     max-width: 100%;
@@ -624,7 +623,7 @@ form.cartao-autenticacao .btn-enviar {
     }
 }
 
-/* ===== Página inicial (index.html) ===== */
+
 .pagina-inicial {
     --fonte-titulo: 'Bricolage Grotesque', 'Segoe UI', Roboto, Arial, sans-serif;
 }
@@ -690,134 +689,8 @@ a.btn-enviar {
     gap: 1rem;
 }
 
-/* Simulador do hero */
-.simulador {
-    background: var(--card-bg);
-    border: 1px solid #29292e;
-    border-radius: 12px;
-    padding: 1.75rem;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
-}
 
-.simulador h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 1.15rem;
-    margin-bottom: 1.25rem;
-}
 
-.simulador-controle + .simulador-controle {
-    margin-top: 1rem;
-}
-
-.simulador-controle label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-}
-
-.simulador-controle output {
-    color: #fff;
-    font-weight: 600;
-}
-
-.simulador input[type="range"] {
-    width: 100%;
-    accent-color: var(--primary);
-    cursor: pointer;
-}
-
-.simulador-resultado {
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid #29292e;
-}
-
-.simulador-resultado > span {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.simulador-total {
-    display: block;
-    font-family: var(--fonte-titulo);
-    font-size: clamp(2rem, 4vw, 2.7rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--primary-hover);
-    margin: 0.15rem 0 1rem;
-}
-
-.simulador-grafico {
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    height: 150px;
-}
-
-.simulador-coluna {
-    flex: 1;
-    min-width: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-.simulador-coluna i {
-    display: block;
-    transition: height 0.35s ease;
-}
-
-.simulador-coluna .guardado {
-    background: #3b4a45;
-}
-
-.simulador-coluna .rendimento {
-    background: var(--primary);
-    border-radius: 2px 2px 0 0;
-}
-
-.simulador-legenda {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1.4rem;
-    margin-top: 0.9rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.simulador-legenda strong {
-    color: var(--text-color);
-}
-
-.simulador-legenda span::before {
-    content: '';
-    display: inline-block;
-    width: 0.7rem;
-    height: 0.7rem;
-    border-radius: 2px;
-    margin-right: 0.45rem;
-    vertical-align: -1px;
-}
-
-.simulador-legenda .l-guardado::before {
-    background: #3b4a45;
-}
-
-.simulador-legenda .l-rendimento::before {
-    background: var(--primary);
-}
-
-.simulador .aviso {
-    margin-top: 1rem;
-}
-
-.simulador .aviso a {
-    color: var(--primary-hover);
-}
-
-/* Seções */
 .inicio-secao {
     padding-top: 4rem;
     padding-bottom: 4rem;

@@ -66,7 +66,7 @@ A interface é escura, responsiva e foi pensada para ser simples de navegar, com
 
 | Tela | Arquivo | Descrição |
 |---|---|---|
-| Início | `index.html` | Apresentação do projeto e simulador interativo |
+| Início | `index.html` | Apresentação do projeto|
 | Login | `tela_login.html` | Entrada com e-mail e senha |
 | Cadastro | `tela_cadastro.html` | Criação de conta |
 | Painel | `tela_principal.html` | Controle de entradas, saídas e saldo |

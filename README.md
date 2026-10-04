@@ -10,8 +10,7 @@
 
 O **Finança+** nasceu para reunir, em um só lugar, as ferramentas que uma pessoa usa no dia a dia para organizar o próprio dinheiro: registrar o que entra e o que sai, conferir o câmbio antes de uma compra ou viagem e simular quanto um aporte mensal pode render ao longo dos anos.
 
-A interface é escura, responsiva e foi pensada para ser simples de navegar, com uma página inicial que apresenta o projeto e uma simulação interativa logo na primeira tela.
-
+A interface é escura, responsiva e foi pensada para ser simples de navegar, com uma página inicial que apresenta o projeto.
 ---
 
 ## Sumário
@@ -32,7 +31,6 @@ A interface é escura, responsiva e foi pensada para ser simples de navegar, com
 
 ### Página inicial
 - Apresentação do projeto com chamadas para criar conta e entrar.
-- **Simulador interativo** no topo da página: ajuste quanto você guarda por mês e por quantos anos, e veja o valor final estimado e um gráfico de crescimento ano a ano, separando o que foi guardado do rendimento.
 - Resumo das quatro ferramentas, com link direto para cada uma.
 - Passo a passo de como começar.
 

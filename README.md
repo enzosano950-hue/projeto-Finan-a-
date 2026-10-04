@@ -74,9 +74,6 @@ A interface é escura, responsiva e foi pensada para ser simples de navegar, com
 | Cotações | `tela_cotacao.html` | Consulta de cotação entre duas moedas |
 | Investimentos | `tela_previsao.html` | Simulação de aportes e rendimento |
 
-> 📸 **Dica:** adicione capturas de tela em uma pasta `docs/` ou `screenshots/` e referencie aqui:
-> `![Página inicial](docs/inicio.png)`
-
 ---
 
 ## Tecnologias utilizadas

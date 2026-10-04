@@ -164,21 +164,7 @@ A página inicial e a tela de Investimentos usam essa mesma lógica.
 
 ---
 
-## Limitações conhecidas e próximos passos
 
-O projeto tem fins de estudo e portfólio. Antes de qualquer uso real, estes pontos precisam de atenção:
-
-- [ ] **Senhas em texto puro:** usar `password_hash()` e `password_verify()` do PHP.
-- [ ] **SQL Injection:** trocar as consultas concatenadas por *prepared statements* (`mysqli_prepare` ou PDO).
-- [ ] **Proteção de páginas:** as telas internas são `.html` e não verificam a sessão. Convertê-las para `.php` e validar `$_SESSION['logado']`.
-- [ ] **Transações no banco:** hoje ficam apenas no navegador. Salvá-las por usuário no MySQL permitiria acessar de qualquer dispositivo.
-- [ ] Botão "Sair" que realmente encerra a sessão (`session_destroy()`).
-- [ ] Edição de transações e filtros por período ou categoria.
-- [ ] Gráficos de gastos por categoria.
-- [ ] Exportação dos lançamentos para CSV.
-- [ ] Histórico de cotações em gráfico.
-
----
 
 ## Como contribuir
 
@@ -192,12 +178,8 @@ Contribuições são bem-vindas.
 
 ---
 
-## Licença
 
-Defina a licença do seu projeto. Se quiser permitir uso livre, o [MIT](https://choosealicense.com/licenses/mit/) é uma boa escolha. Crie um arquivo `LICENSE` e atualize esta seção.
-
----
 
 ## Autor
 
-Feito por **[Seu Nome](https://github.com/seu-usuario)**. Fique à vontade para abrir uma *issue* com dúvidas ou sugestões.
+Feito por **[enzo sano](https://github.com/enzosano950-hue)**. Fique à vontade para abrir uma *issue* com dúvidas ou sugestões.
